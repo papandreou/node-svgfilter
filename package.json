@@ -7,7 +7,8 @@
       "test": "test"
     },
     "dependencies": {
-        "xmldom": "=0.1.16"
+        "xmldom": "=0.1.16",
+        "optimist": "=0.5.2"
     },
     "devDependencies": {
         "expect.js": "=0.2.0",
