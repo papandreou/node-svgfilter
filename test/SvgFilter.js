@@ -44,6 +44,22 @@ describe('SvgFilter', function () {
             .on('error', done);
     });
 
+    it('should execute inline JavaScript with the specified id', function (done) {
+        var svgFilter = new SvgFilter({runScript: 'run', injectId: 'theId'}),
+            chunks = [];
+        fs.createReadStream(Path.resolve(__dirname, 'svg-with-script.svg'))
+            .pipe(svgFilter)
+            .on('data', function (chunk) {
+                chunks.push(chunk);
+            })
+            .on('end', function () {
+                var resultSvgText = Buffer.concat(chunks).toString('utf-8');
+                expect(resultSvgText).to.match(/id="theId"/);
+                done();
+            })
+            .on('error', done);
+    });
+
     it('should not emit data events while paused', function (done) {
         var svgFilter = new SvgFilter();
 

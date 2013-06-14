@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="48px" width="48px">
+    <g inkscape:groupmode="layer" id="layer1">
+        <path transform="matrix(1.197183,0,0,1.098591,-6.201582,-3.209507)" d="M 39.875 42.0625 A 13.8125 4.4375 0 1 1  12.25,42.0625 A 13.8125 4.4375 0 1 1  39.875 42.0625 z"/>
+    </g>
+    <script id="run">
+        if (window.svgFilter) {
+            var g = document.createElement('g');
+            g.setAttribute('id', svgFilter.injectId);
+            document.documentElement.appendChild(g);
+        }
+    </script>
+</svg>
