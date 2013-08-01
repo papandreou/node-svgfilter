@@ -60,6 +60,26 @@ describe('SvgFilter', function () {
             .on('error', done);
     });
 
+    it('should execute external JavaScript with the specified file name', function (done) {
+        var svgFilter = new SvgFilter({
+                runScript: 'addBogusElement.js',
+                url: 'file://' + __dirname + '/data/',
+                bogusElementId: 'theBogusElementId'
+            }),
+            chunks = [];
+        fs.createReadStream(Path.resolve(__dirname, 'data', 'dialog-information.svg'))
+            .pipe(svgFilter)
+            .on('data', function (chunk) {
+                chunks.push(chunk);
+            })
+            .on('end', function () {
+                var resultSvgText = Buffer.concat(chunks).toString('utf-8');
+                expect(resultSvgText).to.match(/id="theBogusElementId"/);
+                done();
+            })
+            .on('error', done);
+    });
+
     it('should not emit data events while paused', function (done) {
         var svgFilter = new SvgFilter();
 
