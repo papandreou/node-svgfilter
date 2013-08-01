@@ -7,7 +7,7 @@ describe('SvgFilter', function () {
     it('should produce a smaller file when exporting only a specific ID', function (done) {
         var svgFilter = new SvgFilter({keepId: ['linearGradient3175']}),
             chunks = [];
-        fs.createReadStream(Path.resolve(__dirname, 'dialog-information.svg'))
+        fs.createReadStream(Path.resolve(__dirname, 'data', 'dialog-information.svg'))
             .pipe(svgFilter)
             .on('data', function (chunk) {
                 chunks.push(chunk);
@@ -27,7 +27,7 @@ describe('SvgFilter', function () {
     it('should produce a smaller file when exporting only a specific ID, command-line argument style', function (done) {
         var svgFilter = new SvgFilter(['--keepId=linearGradient3175']),
             chunks = [];
-        fs.createReadStream(Path.resolve(__dirname, 'dialog-information.svg'))
+        fs.createReadStream(Path.resolve(__dirname, 'data', 'dialog-information.svg'))
             .pipe(svgFilter)
             .on('data', function (chunk) {
                 chunks.push(chunk);
@@ -47,7 +47,7 @@ describe('SvgFilter', function () {
     it('should execute inline JavaScript with the specified id', function (done) {
         var svgFilter = new SvgFilter({runScript: 'run', injectId: 'theId'}),
             chunks = [];
-        fs.createReadStream(Path.resolve(__dirname, 'svg-with-script.svg'))
+        fs.createReadStream(Path.resolve(__dirname, 'data', 'svg-with-script.svg'))
             .pipe(svgFilter)
             .on('data', function (chunk) {
                 chunks.push(chunk);
@@ -69,7 +69,7 @@ describe('SvgFilter', function () {
         svgFilter.pause();
         svgFilter.on('data', fail).on('error', done);
 
-        fs.createReadStream(Path.resolve(__dirname, 'dialog-information.svg')).pipe(svgFilter);
+        fs.createReadStream(Path.resolve(__dirname, 'data', 'dialog-information.svg')).pipe(svgFilter);
 
         setTimeout(function () {
             svgFilter.removeListener('data', fail);
