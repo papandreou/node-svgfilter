@@ -1,35 +1,35 @@
 {
-    "name": "svgfilter",
-    "version": "0.3.1",
-    "description": "",
-    "main": "lib/SvgFilter.js",
-    "directories": {
-      "test": "test"
-    },
-    "dependencies": {
-        "assetgraph": "=1.6.0beta15",
-        "optimist": "=0.5.2",
-        "passerror": "=0.0.2"
-    },
-    "devDependencies": {
-        "expect.js": "=0.2.0",
-        "mocha": "=1.7.3"
-    },
-    "scripts": {
-        "test": "mocha"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/papandreou/node-svgfilter.git"
-    },
-    "keywords": [
-        "image",
-        "images",
-        "svg",
-        "process",
-        "stream",
-        "filter"
-    ],
-    "author": "Andreas Lind Petersen <andreas@one.com>",
-    "license": "BSD"
+  "name": "svgfilter",
+  "version": "0.3.1",
+  "description": "",
+  "main": "lib/SvgFilter.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "assetgraph": "=1.6.0beta15",
+    "optimist": "=0.5.2",
+    "passerror": "=0.0.2"
+  },
+  "devDependencies": {
+    "expect.js": "=0.2.0",
+    "mocha": "=1.7.3"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/papandreou/node-svgfilter.git"
+  },
+  "keywords": [
+    "image",
+    "images",
+    "svg",
+    "process",
+    "stream",
+    "filter"
+  ],
+  "author": "Andreas Lind Petersen <andreas@one.com>",
+  "license": "BSD"
 }
