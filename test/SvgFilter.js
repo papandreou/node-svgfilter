@@ -1,4 +1,4 @@
-var expect = require('expect.js'),
+var expect = require('unexpected'),
     SvgFilter = require('../lib/SvgFilter'),
     Path = require('path'),
     fs = require('fs');
@@ -14,11 +14,11 @@ describe('SvgFilter', function () {
             })
             .on('end', function () {
                 var resultSvgBuffer = Buffer.concat(chunks);
-                expect(resultSvgBuffer.length).to.be.greaterThan(0);
-                expect(resultSvgBuffer.length).to.be.lessThan(38289);
+                expect(resultSvgBuffer.length, 'to be greater than', 0);
+                expect(resultSvgBuffer.length, 'to be less than', 38289);
                 var resultSvgText = resultSvgBuffer.toString('utf-8');
-                expect(resultSvgText).to.match(/id="linearGradient3175"/);
-                expect(resultSvgText).not.to.match(/id="linearGradient2399"/);
+                expect(resultSvgText, 'to match', /id="linearGradient3175"/);
+                expect(resultSvgText, 'not to match', /id="linearGradient2399"/);
                 done();
             })
             .on('error', done);
@@ -34,11 +34,11 @@ describe('SvgFilter', function () {
             })
             .on('end', function () {
                 var resultSvgBuffer = Buffer.concat(chunks);
-                expect(resultSvgBuffer.length).to.be.greaterThan(0);
-                expect(resultSvgBuffer.length).to.be.lessThan(38292);
+                expect(resultSvgBuffer.length, 'to be greater than', 0);
+                expect(resultSvgBuffer.length, 'to be less than', 38292);
                 var resultSvgText = resultSvgBuffer.toString('utf-8');
-                expect(resultSvgText).to.match(/id="linearGradient3175"/);
-                expect(resultSvgText).not.to.match(/id="linearGradient2399"/);
+                expect(resultSvgText, 'to match', /id="linearGradient3175"/);
+                expect(resultSvgText, 'not to match', /id="linearGradient2399"/);
                 done();
             })
             .on('error', done);
@@ -54,7 +54,7 @@ describe('SvgFilter', function () {
             })
             .on('end', function () {
                 var resultSvgText = Buffer.concat(chunks).toString('utf-8');
-                expect(resultSvgText).to.match(/id="theId"/);
+                expect(resultSvgText, 'to match', /id="theId"/);
                 done();
             })
             .on('error', done);
@@ -74,7 +74,7 @@ describe('SvgFilter', function () {
             })
             .on('end', function () {
                 var resultSvgText = Buffer.concat(chunks).toString('utf-8');
-                expect(resultSvgText).to.match(/id="theBogusElementId"/);
+                expect(resultSvgText, 'to match', /id="theBogusElementId"/);
                 done();
             })
             .on('error', done);
@@ -101,7 +101,7 @@ describe('SvgFilter', function () {
                 })
                 .on('end', function () {
                     var resultSvgBuffer = Buffer.concat(chunks);
-                    expect(resultSvgBuffer.length).to.equal(38289);
+                    expect(resultSvgBuffer.length, 'to equal', 38289);
                     done();
                 });
 
