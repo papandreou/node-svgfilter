@@ -7,7 +7,7 @@
     "test": "test"
   },
   "dependencies": {
-    "assetgraph": "=1.6.32",
+    "assetgraph": "1.8.0",
     "optimist": "=0.5.2",
     "passerror": "=1.0.1"
   },

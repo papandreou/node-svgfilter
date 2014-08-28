@@ -1,3 +1,4 @@
+/* global describe, it */
 var expect = require('unexpected'),
     SvgFilter = require('../lib/SvgFilter'),
     Path = require('path'),
@@ -116,10 +117,10 @@ describe('SvgFilter', function () {
             done();
         }).on('data', function (chunk) {
             done(new Error('SvgFilter emitted data when an error was expected'));
-        }).on('end', function (chunk) {
+        }).on('end', function () {
             done(new Error('SvgFilter emitted end when an error was expected'));
         });
 
-        svgFilter.end(new Buffer('qwvopeqwovkqvwiejvq', 'utf-8'));
+        svgFilter.end(new Buffer('<?img attr="<>&"/>', 'utf-8'));
     });
 });
