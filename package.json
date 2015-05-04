@@ -13,7 +13,8 @@
   },
   "devDependencies": {
     "mocha": "2.2.4",
-    "unexpected": "7.0.5"
+    "unexpected": "7.0.5",
+    "unexpected-stream": "1.0.0"
   },
   "scripts": {
     "test": "mocha"
