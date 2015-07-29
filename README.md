@@ -1,6 +1,11 @@
 node-svgfilter
 ==============
 
+[![NPM version](https://badge.fury.io/js/svgfilter.svg)](http://badge.fury.io/js/svgfilter)
+[![Build Status](https://travis-ci.org/papandreou/node-svgfilter.svg?branch=master)](https://travis-ci.org/papandreou/node-svgfilter)
+[![Coverage Status](https://coveralls.io/repos/papandreou/node-svgfilter/badge.svg)](https://coveralls.io/r/papandreou/node-svgfilter)
+[![Dependency Status](https://david-dm.org/papandreou/node-svgfilter.svg)](https://david-dm.org/papandreou/node-svgfilter)
+
 A readable/writable stream that manipulates SVG files. The primary use
 case is removing elements whose `id` attribute isn't on a
 whitelist. This is useful as a preprocessor to `inkscape` that only

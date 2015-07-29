@@ -1,4 +1,4 @@
-/* global describe, it */
+/*global describe, it, __dirname, setTimeout*/
 var unexpected = require('unexpected'),
     SvgFilter = require('../lib/SvgFilter'),
     Path = require('path'),

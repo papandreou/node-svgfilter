@@ -12,12 +12,18 @@
     "passerror": "1.1.0"
   },
   "devDependencies": {
-    "mocha": "2.2.4",
-    "unexpected": "7.0.5",
-    "unexpected-stream": "1.1.0"
+    "coveralls": "2.11.3",
+    "istanbul": "0.3.17",
+    "jshint": "2.8.0",
+    "mocha": "2.2.5",
+    "unexpected": "9.4.0",
+    "unexpected-stream": "1.2.0"
   },
   "scripts": {
-    "test": "mocha"
+    "lint": "jshint .",
+    "test": "mocha && npm run lint",
+    "travis": "npm test && npm run coverage && (<coverage/lcov.info coveralls || true)",
+    "coverage": "NODE_ENV=development istanbul cover _mocha --report lcov --report text -- --reporter dot"
   },
   "repository": {
     "type": "git",
