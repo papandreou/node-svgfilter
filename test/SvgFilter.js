@@ -1,14 +1,12 @@
 /*global describe, it, __dirname, setTimeout*/
-var unexpected = require('unexpected'),
-    SvgFilter = require('../lib/SvgFilter'),
-    Path = require('path'),
-    fs = require('fs');
+const expect = require('unexpected').clone().installPlugin(require('unexpected-stream'));
+const SvgFilter = require('../lib/SvgFilter');
+const Path = require('path');
+const fs = require('fs');
 
 describe('SvgFilter', function () {
-    var expect = unexpected.clone().installPlugin(require('unexpected-stream'));
-
-    it('should produce a smaller file when exporting only a specific ID', function () {
-        return expect(
+    it('should produce a smaller file when exporting only a specific ID', async function () {
+        await expect(
             fs.createReadStream(Path.resolve(__dirname, 'data', 'dialog-information.svg')),
             'when piped through',
             new SvgFilter({keepId: ['linearGradient3175']}),
@@ -19,8 +17,8 @@ describe('SvgFilter', function () {
         );
     });
 
-    it('should produce a smaller file when exporting only a specific ID, command-line argument style', function () {
-        return expect(
+    it('should produce a smaller file when exporting only a specific ID, command-line argument style', async function () {
+        await expect(
             fs.createReadStream(Path.resolve(__dirname, 'data', 'dialog-information.svg')),
             'when piped through',
             new SvgFilter(['--keepId=linearGradient3175']),
@@ -31,8 +29,8 @@ describe('SvgFilter', function () {
         );
     });
 
-    it('should execute inline JavaScript with the specified id', function () {
-        return expect(
+    it('should execute inline JavaScript with the specified id', async function () {
+        await expect(
             fs.createReadStream(Path.resolve(__dirname, 'data', 'svg-with-script.svg')),
             'when piped through',
             new SvgFilter({runScript: 'run', injectId: 'theId'}),
@@ -42,8 +40,8 @@ describe('SvgFilter', function () {
         );
     });
 
-    it('should execute external JavaScript with the specified file name', function () {
-        return expect(
+    it('should execute external JavaScript with the specified file name', async function () {
+        await expect(
             fs.createReadStream(Path.resolve(__dirname, 'data', 'dialog-information.svg')),
             'when piped through',
             new SvgFilter({
@@ -58,7 +56,7 @@ describe('SvgFilter', function () {
     });
 
     it('should not emit data events while paused', function (done) {
-        var svgFilter = new SvgFilter();
+        const svgFilter = new SvgFilter();
 
         function fail() {
             done(new Error('SvgFilter emitted data while it was paused!'));
@@ -70,14 +68,12 @@ describe('SvgFilter', function () {
 
         setTimeout(function () {
             svgFilter.removeListener('data', fail);
-            var chunks = [];
+            const chunks = [];
 
             svgFilter
-                .on('data', function (chunk) {
-                    chunks.push(chunk);
-                })
-                .on('end', function () {
-                    var resultSvgBuffer = Buffer.concat(chunks);
+                .on('data', chunk => chunks.push(chunk))
+                .on('end', () => {
+                    const resultSvgBuffer = Buffer.concat(chunks);
                     expect(resultSvgBuffer.length, 'to equal', 38291);
                     done();
                 });
@@ -87,15 +83,14 @@ describe('SvgFilter', function () {
     });
 
     it('should emit an error if an invalid image is processed', function (done) {
-        var svgFilter = new SvgFilter();
+        const svgFilter = new SvgFilter();
 
-        svgFilter.on('error', function (err) {
+        svgFilter.on('error', err => {
+            expect(err, 'to have message', /Parse error/);
             done();
-        }).on('data', function (chunk) {
-            done(new Error('SvgFilter emitted data when an error was expected'));
-        }).on('end', function () {
-            done(new Error('SvgFilter emitted end when an error was expected'));
-        });
+        })
+        .on('data', chunk => done(new Error('SvgFilter emitted data when an error was expected')))
+        .on('end', () => done(new Error('SvgFilter emitted end when an error was expected')));
 
         svgFilter.end(new Buffer('<?img attr="<>&"/>', 'utf-8'));
     });
