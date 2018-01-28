@@ -78,7 +78,7 @@ describe('SvgFilter', function () {
                 })
                 .on('end', function () {
                     var resultSvgBuffer = Buffer.concat(chunks);
-                    expect(resultSvgBuffer.length, 'to equal', 38289);
+                    expect(resultSvgBuffer.length, 'to equal', 38291);
                     done();
                 });
 
