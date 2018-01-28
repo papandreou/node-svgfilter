@@ -89,8 +89,8 @@ describe('SvgFilter', function () {
             expect(err, 'to have message', /Parse error/);
             done();
         })
-        .on('data', chunk => done(new Error('SvgFilter emitted data when an error was expected')))
-        .on('end', () => done(new Error('SvgFilter emitted end when an error was expected')));
+            .on('data', chunk => done(new Error('SvgFilter emitted data when an error was expected')))
+            .on('end', () => done(new Error('SvgFilter emitted end when an error was expected')));
 
         svgFilter.end(new Buffer('<?img attr="<>&"/>', 'utf-8'));
     });
