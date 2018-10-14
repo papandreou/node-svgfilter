@@ -115,6 +115,6 @@ describe('SvgFilter', () => {
         done(new Error('SvgFilter emitted end when an error was expected'))
       );
 
-    svgFilter.end(new Buffer('<?img attr="<>&"/>', 'utf-8'));
+    svgFilter.end(Buffer.from('<?img attr="<>&"/>', 'utf-8'));
   });
 });
