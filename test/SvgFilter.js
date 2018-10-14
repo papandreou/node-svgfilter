@@ -6,8 +6,8 @@ const SvgFilter = require('../lib/SvgFilter');
 const Path = require('path');
 const fs = require('fs');
 
-describe('SvgFilter', function() {
-  it('should produce a smaller file when exporting only a specific ID', async function() {
+describe('SvgFilter', () => {
+  it('should produce a smaller file when exporting only a specific ID', async () => {
     await expect(
       fs.createReadStream(
         Path.resolve(__dirname, 'data', 'dialog-information.svg')
@@ -23,7 +23,7 @@ describe('SvgFilter', function() {
     );
   });
 
-  it('should produce a smaller file when exporting only a specific ID, command-line argument style', async function() {
+  it('should produce a smaller file when exporting only a specific ID, command-line argument style', async () => {
     await expect(
       fs.createReadStream(
         Path.resolve(__dirname, 'data', 'dialog-information.svg')
@@ -39,7 +39,7 @@ describe('SvgFilter', function() {
     );
   });
 
-  it('should execute inline JavaScript with the specified id', async function() {
+  it('should execute inline JavaScript with the specified id', async () => {
     await expect(
       fs.createReadStream(
         Path.resolve(__dirname, 'data', 'svg-with-script.svg')
@@ -54,7 +54,7 @@ describe('SvgFilter', function() {
     );
   });
 
-  it('should execute external JavaScript with the specified file name', async function() {
+  it('should execute external JavaScript with the specified file name', async () => {
     await expect(
       fs.createReadStream(
         Path.resolve(__dirname, 'data', 'dialog-information.svg')
@@ -73,7 +73,7 @@ describe('SvgFilter', function() {
     );
   });
 
-  it('should not emit data events while paused', function(done) {
+  it('should not emit data events while paused', done => {
     const svgFilter = new SvgFilter();
 
     function fail() {
@@ -86,7 +86,7 @@ describe('SvgFilter', function() {
       Path.resolve(__dirname, 'data', 'dialog-information.svg')
     ).pipe(svgFilter);
 
-    setTimeout(function() {
+    setTimeout(() => {
       svgFilter.removeListener('data', fail);
       const chunks = [];
 
@@ -100,7 +100,7 @@ describe('SvgFilter', function() {
     }, 1000);
   });
 
-  it('should emit an error if an invalid image is processed', function(done) {
+  it('should emit an error if an invalid image is processed', done => {
     const svgFilter = new SvgFilter();
 
     svgFilter

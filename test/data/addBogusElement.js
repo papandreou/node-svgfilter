@@ -1,4 +1,4 @@
 /*global document, svgFilter*/
-var g = document.createElement('g');
+const g = document.createElement('g');
 g.setAttribute('id', svgFilter.bogusElementId || 'blablaf');
 document.documentElement.appendChild(g);
