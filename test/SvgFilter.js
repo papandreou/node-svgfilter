@@ -3,14 +3,14 @@ const expect = require('unexpected')
   .clone()
   .installPlugin(require('unexpected-stream'));
 const SvgFilter = require('../lib/SvgFilter');
-const Path = require('path');
+const pathModule = require('path');
 const fs = require('fs');
 
 describe('SvgFilter', () => {
   it('should produce a smaller file when exporting only a specific ID', async () => {
     await expect(
       fs.createReadStream(
-        Path.resolve(__dirname, 'data', 'dialog-information.svg')
+        pathModule.resolve(__dirname, 'data', 'dialog-information.svg')
       ),
       'when piped through',
       new SvgFilter({ keepId: ['linearGradient3175'] }),
@@ -26,7 +26,7 @@ describe('SvgFilter', () => {
   it('should produce a smaller file when exporting only a specific ID, command-line argument style', async () => {
     await expect(
       fs.createReadStream(
-        Path.resolve(__dirname, 'data', 'dialog-information.svg')
+        pathModule.resolve(__dirname, 'data', 'dialog-information.svg')
       ),
       'when piped through',
       new SvgFilter(['--keepId=linearGradient3175']),
@@ -42,7 +42,7 @@ describe('SvgFilter', () => {
   it('should execute inline JavaScript with the specified id', async () => {
     await expect(
       fs.createReadStream(
-        Path.resolve(__dirname, 'data', 'svg-with-script.svg')
+        pathModule.resolve(__dirname, 'data', 'svg-with-script.svg')
       ),
       'when piped through',
       new SvgFilter({ runScript: 'run', injectId: 'theId' }),
@@ -57,12 +57,12 @@ describe('SvgFilter', () => {
   it('should execute external JavaScript with the specified file name', async () => {
     await expect(
       fs.createReadStream(
-        Path.resolve(__dirname, 'data', 'dialog-information.svg')
+        pathModule.resolve(__dirname, 'data', 'dialog-information.svg')
       ),
       'when piped through',
       new SvgFilter({
         runScript: 'addBogusElement.js',
-        url: 'file://' + __dirname + '/data/',
+        url: `file://${__dirname}/data/`,
         bogusElementId: 'theBogusElementId'
       }),
       'to yield output satisfying',
@@ -83,7 +83,7 @@ describe('SvgFilter', () => {
     svgFilter.on('data', fail).on('error', done);
 
     fs.createReadStream(
-      Path.resolve(__dirname, 'data', 'dialog-information.svg')
+      pathModule.resolve(__dirname, 'data', 'dialog-information.svg')
     ).pipe(svgFilter);
 
     setTimeout(() => {
