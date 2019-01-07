@@ -90,11 +90,13 @@ describe('SvgFilter', () => {
       svgFilter.removeListener('data', fail);
       const chunks = [];
 
-      svgFilter.on('data', chunk => chunks.push(chunk)).on('end', () => {
-        const resultSvgBuffer = Buffer.concat(chunks);
-        expect(resultSvgBuffer.length, 'to equal', 38291);
-        done();
-      });
+      svgFilter
+        .on('data', chunk => chunks.push(chunk))
+        .on('end', () => {
+          const resultSvgBuffer = Buffer.concat(chunks);
+          expect(resultSvgBuffer.length, 'to equal', 38291);
+          done();
+        });
 
       svgFilter.resume();
     }, 1000);
