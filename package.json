@@ -24,7 +24,7 @@
     "nyc": "^14.0.0",
     "prettier": "~1.17.0",
     "unexpected": "^11.0.0",
-    "unexpected-stream": "^3.0.0"
+    "unexpected-stream": "^4.0.0"
   },
   "scripts": {
     "lint": "eslint . && prettier --check '**/*.js'",
