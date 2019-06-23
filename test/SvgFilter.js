@@ -1,4 +1,3 @@
-/* global describe, it, __dirname, setTimeout */
 const expect = require('unexpected')
   .clone()
   .installPlugin(require('unexpected-stream'));
