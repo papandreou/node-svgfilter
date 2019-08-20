@@ -7,7 +7,7 @@
     "test": "test"
   },
   "dependencies": {
-    "assetgraph": "^5.3.1",
+    "assetgraph": "^6.0.0",
     "optimist": "^0.6.1"
   },
   "devDependencies": {

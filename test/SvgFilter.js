@@ -93,7 +93,7 @@ describe('SvgFilter', () => {
         .on('data', chunk => chunks.push(chunk))
         .on('end', () => {
           const resultSvgBuffer = Buffer.concat(chunks);
-          expect(resultSvgBuffer.length, 'to equal', 38291);
+          expect(resultSvgBuffer.length, 'to equal', 38298);
           done();
         });
 
