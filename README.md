@@ -1,5 +1,4 @@
-node-svgfilter
-==============
+# node-svgfilter
 
 [![NPM version](https://badge.fury.io/js/svgfilter.svg)](http://badge.fury.io/js/svgfilter)
 [![Build Status](https://travis-ci.org/papandreou/node-svgfilter.svg?branch=master)](https://travis-ci.org/papandreou/node-svgfilter)
@@ -15,11 +14,11 @@ Example:
 
 ```javascript
 var SvgFilter = require('svgfilter'),
-    fs = require('fs');
+  fs = require('fs');
 
 fs.createReadStream('source.svg')
-    .pipe(new SvgFilter({keepId: ['foo', 'bar']}))
-    .pipe(fs.createWriteStream('target.svg'));
+  .pipe(new SvgFilter({ keepId: ['foo', 'bar'] }))
+  .pipe(fs.createWriteStream('target.svg'));
 ```
 
 As an experimental feature you can run inline JavaScript found in the
@@ -44,19 +43,18 @@ Given `blackCircle.svg`:
 
 ```javascript
 var SvgFilter = require('svgfilter'),
-    fs = require('fs');
+  fs = require('fs');
 
-require('fs').createReadStream('blackCircle.svg')
-    .pipe(new SvgFilter({runScript: true, circleColor: 'maroon'}))
-    .pipe(process.stdout);
+require('fs')
+  .createReadStream('blackCircle.svg')
+  .pipe(new SvgFilter({ runScript: true, circleColor: 'maroon' }))
+  .pipe(process.stdout);
 ```
 
 This will produce an SVG file where the `stroke` attribute of the
 circle element has been changed to `maroon`. The `runScript` option
 can also specify the id of the script to run, or an array of ids.
 
-
-License
--------
+## License
 
 3-clause BSD license -- see the `LICENSE` file for details.

@@ -62,7 +62,7 @@ describe('SvgFilter', () => {
       new SvgFilter({
         runScript: 'addBogusElement.js',
         url: `file://${__dirname}/data/`,
-        bogusElementId: 'theBogusElementId'
+        bogusElementId: 'theBogusElementId',
       }),
       'to yield output satisfying',
       'when decoded as',
@@ -72,7 +72,7 @@ describe('SvgFilter', () => {
     );
   });
 
-  it('should not emit data events while paused', done => {
+  it('should not emit data events while paused', (done) => {
     const svgFilter = new SvgFilter();
 
     function fail() {
@@ -90,7 +90,7 @@ describe('SvgFilter', () => {
       const chunks = [];
 
       svgFilter
-        .on('data', chunk => chunks.push(chunk))
+        .on('data', (chunk) => chunks.push(chunk))
         .on('end', () => {
           const resultSvgBuffer = Buffer.concat(chunks);
           expect(resultSvgBuffer.length, 'to equal', 38298);
@@ -101,15 +101,15 @@ describe('SvgFilter', () => {
     }, 1000);
   });
 
-  it('should emit an error if an invalid image is processed', done => {
+  it('should emit an error if an invalid image is processed', (done) => {
     const svgFilter = new SvgFilter();
 
     svgFilter
-      .on('error', err => {
+      .on('error', (err) => {
         expect(err, 'to have message', /Parse error/);
         done();
       })
-      .on('data', chunk =>
+      .on('data', (chunk) =>
         done(new Error('SvgFilter emitted data when an error was expected'))
       )
       .on('end', () =>
