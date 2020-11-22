@@ -55,6 +55,10 @@ This will produce an SVG file where the `stroke` attribute of the
 circle element has been changed to `maroon`. The `runScript` option
 can also specify the id of the script to run, or an array of ids.
 
+## Releases
+
+[Changelog](https://github.com/papandreou/node-svgfilter/blob/master/CHANGELOG.md)
+
 ## License
 
 3-clause BSD license -- see the `LICENSE` file for details.
