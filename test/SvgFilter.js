@@ -61,7 +61,7 @@ describe('SvgFilter', () => {
       'when piped through',
       new SvgFilter({
         runScript: 'addBogusElement.js',
-        url: `file://${__dirname}/data/`,
+        url: `file://${pathModule.join(__dirname, 'data')}/`,
         bogusElementId: 'theBogusElementId',
       }),
       'to yield output satisfying',
