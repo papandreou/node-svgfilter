@@ -1,3 +1,17 @@
+### v4.1.0 (2021-05-12)
+
+#### Pull requests
+
+- [#49](https://github.com/papandreou/node-svgfilter/pull/49) Update assetgraph to version 7.0.1 \(semver-minor\) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [#48](https://github.com/papandreou/node-svgfilter/pull/48) Upgrade prettier to version 2.3.0 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#42](https://github.com/papandreou/node-svgfilter/pull/42) Upgrade eslint-config-prettier to version 7.0.0 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#41](https://github.com/papandreou/node-svgfilter/pull/41) Upgrade eslint-plugin-standard to version 5.0.0 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+
+#### Commits to master
+
+- [Fix eslint-plugin-prettier usage](https://github.com/papandreou/node-svgfilter/commit/1a90439b19af2b5446824ba82fa7fb3e41bbc74e) ([Andreas Lind](mailto:andreas.lind@workday.com))
+- [Update eslint-config-prettier to version 8.3.0](https://github.com/papandreou/node-svgfilter/commit/0f9bf95a7aaa1430432af8b8cae33f7f660a641c) ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+
 ### v4.0.0 (2020-11-22)
 
 #### Pull requests
